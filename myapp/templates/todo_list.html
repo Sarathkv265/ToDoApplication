@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block main_block%}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <table class="table border border-dark rounded border-2 p-4 shadow mt-5">
+                <tr>
+                    <th>Title</th>
+                    <th>Discription</th>
+                    <th>Status</th>
+                    <th>Created date</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+                </tr>
+                {% for e in lists %}
+                <tr>
+                    <td>{{e.title}}</td>
+                    <td>{{e.discription}}</td>
+                    <td>
+                        {% if e.task_status == False %}
+                            <!-- Pending -->
+                            <p class="text-danger">Pending</p>
+
+                        {%else%}
+                            <!-- Completed -->
+                            <p class="text-success">Completed</p>
+                        {%endif%}
+                    </td>
+                    <td>{{e.created_date}}</td>
+                    <td>{{e.Due_date}}</td>
+                    <td class="">
+                        <a href="{% url 'todo-edit' e.id %}" class="btn btn-outline-warning"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                        <a href="{% url 'todo-delete' e.id %}" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i>Delete</a>
+                        
+                    </td>
+                    
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+</div>
+{%endblock%}

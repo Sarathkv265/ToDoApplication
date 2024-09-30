@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form action="" method="post" class="border border my-2 shadow">
+                {%csrf_token%}
+                <h3>ToDo Create</h3>
+                <!-- {{form}} -->
+                <div>
+                    <label for="">Title</label>
+                    {{form.title}}
+                </div>
+                <div>
+                    <label> Discription</label>
+                    {{form.discription}}
+                </div>
+                <!-- <div>
+                    <label for="">Date</label>
+                    {{form.created_date}}
+                </div> -->
+
+                <div>
+                    <label> Due Date</label>
+                    {{form.Due_date}}
+                </div>
+
+                <button type="submit">ADD</button>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+{%endblock%}
